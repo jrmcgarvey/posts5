@@ -1,0 +1,13 @@
+<h2>Enter the following to enroll as a new user.</h2>
+<form action="/enroll" method="post">
+  Your email:<br>
+  <input type="email" name="email"><br>
+  Your password:<br>
+  <input type="password" name="password"><br>
+  Password confirmation:<br>
+  <input type="password" name="password_confirmation"><br>
+  <input type="submit"><br><br>
+    <p><%= session[:message] %> </p>
+  <% session[:message]=nil %>
+  <p>If you are already enrolled <a href="/logon">logon here.</a></p>
+</form>

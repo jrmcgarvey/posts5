@@ -1,0 +1,11 @@
+<h2>Please Log On</h2>
+<form action="/logon" method="post">
+  Your email:<br>
+  <input type="email" name="email"><br>
+  Your password:<br>
+  <input type="password" name="password"><br>
+  <input type="submit"><br><br>
+  <a href='/enroll'>Enroll as a new user.</a><br><br>
+  <p><%= session[:message] %> </p>
+  <% session[:message]=nil %>
+</form>

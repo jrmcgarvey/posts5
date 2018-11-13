@@ -1,0 +1,14 @@
+<p><%= session[:email] %> is logged on.</p>
+<a href="/logoff">logoff</a>
+
+    <ul>
+        <% @posts.each do |post| %>
+            <li><%= post.user.email + ": " + post.text %></li>
+        <% end %>
+    </ul>
+    <form action="/post" method="post">
+  <input type="text" name="post">
+  <input type="submit">
+     <p><%= session[:message] %> </p>
+  <% session[:message]=nil %>
+</form>
