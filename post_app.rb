@@ -19,11 +19,12 @@ post '/logon' do
         if user.authenticate(params[:password])
             session[:email]=params[:email]
             session[:message]="Logon succeeded for " + params[:email]
-            redirect to '/'
+            redirect '/'
+            return nil
         end
     end
     session[:message]="Logon failed."
-    redirect to '/logon'
+    redirect '/logon'
 end
 
 get '/enroll' do
@@ -38,17 +39,18 @@ post '/enroll' do
            errmessage += key.to_s + " " + value[0].to_s + "<br>"
         end
        session[:message]=errmessage
-       redirect to '/enroll'
+       redirect '/enroll'
    end
     user.save
     session[:email]=params[:email]
     session[:message]= "User " + params[:email] + " was added."
-    redirect to '/' 
+    redirect '/' 
 end
 
 get '/' do
     if !session[:email]
-        redirect to '/logon'
+        redirect '/logon'
+        return nil
     end
     @posts=Post.all
     erb :index
@@ -57,14 +59,27 @@ end
 post '/post' do
     if session[:email]
         user=User.find_by(email: session[:email])
-        user.posts.create(text: params[:post])
-        session[:message]="New post created."
+        post_text=params[:post].strip
+        post=user.posts.new(text: post_text)
+        if !post.valid?
+            errmessage="Errors:<br>"
+            post.errors.messages.each do |key, value|
+                errmessage += key.to_s + " " + value[0].to_s + "<br>"
+            end
+            session[:message]=errmessage
+        else
+            post.save
+            session[:message]="New post created."
+        end
+        redirect '/'
+        return nil
+    else
+        redirect 'logon'
     end
-    redirect to '/'
 end
 
 get '/logoff' do
    session[:email]=nil
    session[:message]="User logged off."
-   redirect to '/logon'
+   redirect '/logon'
 end

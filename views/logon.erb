@@ -1,9 +1,9 @@
 <h2>Please Log On</h2>
 <form action="/logon" method="post">
   Your email:<br>
-  <input type="email" name="email"><br>
+  <input type="email" name="email" maxlenth="80"><br>
   Your password:<br>
-  <input type="password" name="password"><br>
+  <input type="password" name="password" maxlength="20"><br>
   <input type="submit"><br><br>
   <a href='/enroll'>Enroll as a new user.</a><br><br>
   <p><%= session[:message] %> </p>

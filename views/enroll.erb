@@ -1,11 +1,11 @@
 <h2>Enter the following to enroll as a new user.</h2>
 <form action="/enroll" method="post">
   Your email:<br>
-  <input type="email" name="email"><br>
+  <input type="email" name="email" maxlength="80"><br>
   Your password:<br>
-  <input type="password" name="password"><br>
+  <input type="password" name="password" maxlength="20"><br>
   Password confirmation:<br>
-  <input type="password" name="password_confirmation"><br>
+  <input type="password" name="password_confirmation" maxlength="20"><br>
   <input type="submit"><br><br>
     <p><%= session[:message] %> </p>
   <% session[:message]=nil %>
