@@ -2,7 +2,7 @@
 <a href="/logoff">logoff</a>
 
     <ul>
-        <% @posts.each do |post| %>
+        <% Post.order(created_at: :asc).find_each do |post| %>
             <li><%= post.user.email + ": " + post.text %></li>
         <% end %>
     </ul>
