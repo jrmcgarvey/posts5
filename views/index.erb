@@ -2,9 +2,9 @@
 <a href="/logoff">logoff</a>
 
     <ul>
-        <% Post.order(created_at: :asc).find_each do |post| %>
-            <li><%= post.user.email + ": " + post.text %></li>
-        <% end %>
+<!-- todo number 4.  You need to find each post.  For each post you need to look up the corresponding user.  Then
+     you add a list item with the user email and the post text to this list.
+-->
     </ul>
     <form action="/post" method="post">
   <input type="text" name="post" size="80" maxlength="80">
