@@ -1,0 +1,5 @@
+<% user=User.find_by(email: session[:email]) %>
+<% user.posts.each do |post| %>
+<%= post.text %><br>
+<% end %>
+<a href="/">Back to main page</a>
