@@ -2,4 +2,7 @@
 <% user.posts.each do |post| %>
 <%= post.text %><br>
 <% end %>
-<a href="/">Back to main page</a>
+<a href="/">Back to main page</a><br>
+<form action="/delete_all" method="post">
+    <input type="submit" value="Delete All">
+</form>

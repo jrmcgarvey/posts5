@@ -106,3 +106,15 @@ get '/myposts' do
     end
     erb :myposts
 end
+
+post '/delete_all' do 
+    if !session[:email]
+        redirect '/logon'
+    end
+    user=User.find_by(email: session[:email])
+    user.posts.each do |post|
+        post.destroy()
+    end
+    session[:message]="Your posts were deleted."
+    redirect '/'
+end
