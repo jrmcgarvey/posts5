@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_225246) do
+ActiveRecord::Schema.define(version: 2018_12_14_003543) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 2018_11_16_225246) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "stock_prices", force: :cascade do |t|
+    t.string "company"
+    t.string "ticker"
+    t.datetime "timestamp"
+    t.decimal "price"
   end
 
   create_table "users", force: :cascade do |t|

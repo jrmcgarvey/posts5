@@ -25,3 +25,5 @@ class Post < ApplicationRecord
     #validates_associated :user
 end
     
+class StockPrice < ActiveRecord::Base
+end
